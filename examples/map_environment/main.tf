@@ -3,20 +3,12 @@ module "container" {
   container_name  = "name"
   container_image = "cloudposse/geodesic"
 
-  environment = [
-    {
-      name  = "string_var"
-      value = "123"
-    },
-    {
-      name  = "another_string_var"
-      value = "true"
-    },
-    {
-      name  = "yet_another_string_var"
-      value = "false"
-    }
-  ]
+  map_environment = {
+    "string_var"        = "I am a string"
+    "true_boolean_var"  = true
+    "false_boolean_var" = false
+    "integer_var"       = 42
+  }
 }
 
 output "json" {

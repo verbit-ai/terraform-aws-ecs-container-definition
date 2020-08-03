@@ -99,12 +99,6 @@ variable "extra_hosts" {
   default     = null
 }
 
-variable "map_environment" {
-  type        = map(string)
-  description = "The environment variables to pass to the container. This is a map of string: {key: value}, environment override map_environment"
-  default     = null
-}
-
 # https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EnvironmentFile.html
 variable "environment_files" {
   type = list(object({
@@ -186,12 +180,6 @@ variable "dns_servers" {
   default     = null
 }
 
-variable "dns_search_domains" {
-  type        = list(string)
-  description = "Container DNS search domains. A list of DNS search domains that are presented to the container"
-  default     = null
-}
-
 variable "ulimits" {
   type = list(object({
     name      = string
@@ -225,8 +213,8 @@ variable "links" {
 
 variable "user" {
   type        = string
-  description = "The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group. The default (null) will use the container's configured `USER` directive or root if not set."
-  default     = null
+  description = "The user to run as inside the container. Can be any of these formats: user, user:group, uid, uid:gid, user:gid, uid:group"
+  default     = "0"
 }
 
 variable "container_depends_on" {
